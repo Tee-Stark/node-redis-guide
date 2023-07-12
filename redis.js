@@ -42,6 +42,15 @@ const testCommands = async () => {
     // get array
     const daysArray = await RedisClient.lRange("days", 0, -1)
     console.log(daysArray)
+    
+    // remove item from back1
+    await RedisClient.rPop("days")
+    // drop items from 
+    await RedisClient.lPop("days")
+    console.log(await RedisClient.lRange("days", 0, -1))
+    
+    
+    // many more commands hSet, hGet, sAdd, etc
 
     process.exit(0)
 }
